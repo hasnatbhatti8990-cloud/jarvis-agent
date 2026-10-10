@@ -1,1 +1,21 @@
 
+services:
+  - type: web
+    name: jarvis-n8n
+    runtime: image
+    image:
+      url: docker.n8n.io/n8nio/n8n
+    plan: free
+    healthCheckPath: /
+    envVars:
+      - key: N8N_PORT
+        value: "10000"
+      - key: N8N_PROTOCOL
+        value: https
+      - key: WEBHOOK_URL
+        value: https://jarvis-n8n.onrender.com/
+      - key: N8N_ENCRYPTION_KEY
+        generateValue: true
+      - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
+        value: "true"
+        
